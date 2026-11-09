@@ -1,3 +1,4 @@
+/* Trackball 4-direction rotation: 0/90/180/270 via Button 1 */
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
