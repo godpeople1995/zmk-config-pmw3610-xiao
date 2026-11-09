@@ -1,6 +1,8 @@
 #include <physical_layouts.dtsi>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/zmk/input-transform.h>
+#include <input/processors.dtsi>
 
 / {
 
@@ -9,59 +11,59 @@
         zmk,physical-layout = &physical_layout0;
     };
 
-    /* ===== Input Processors: Xoay trackball ===== */
+    /* ===== Input Processors: Xoay trackball 4 huong ===== */
 
-    /* 90° CW: (x,y) → (y, -x) = swap + y-invert */
+    /* 90 CW: (x,y) -> (y, -x) = swap + x-invert */
     zip_rot_90: zip_rot_90 {
         compatible = "zmk,input-processor-transform";
         #input-processor-cells = <1>;
         type = <INPUT_EV_REL>;
-        xy-swap;
-        y-invert;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
     };
 
-    /* 180°: (x,y) → (-x, -y) = x-invert + y-invert */
+    /* 180: (x,y) -> (-x, -y) = x-invert + y-invert */
     zip_rot_180: zip_rot_180 {
         compatible = "zmk,input-processor-transform";
         #input-processor-cells = <1>;
         type = <INPUT_EV_REL>;
-        x-invert;
-        y-invert;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
     };
 
-    /* 270° CW: (x,y) → (-y, x) = swap + x-invert */
+    /* 270 CW: (x,y) -> (-y, x) = swap + y-invert */
     zip_rot_270: zip_rot_270 {
         compatible = "zmk,input-processor-transform";
         #input-processor-cells = <1>;
         type = <INPUT_EV_REL>;
-        xy-swap;
-        x-invert;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
     };
 
-    /* ===== Trackball Listener với layer-based rotation ===== */
+    /* ===== Trackball Listener voi layer-based rotation ===== */
 
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* Layer 0 (default): 0° - không cần processor */
+        /* Layer 0 (default): 0 - khong can processor */
 
-        /* Layer 1: 90° CW */
+        /* Layer 1: 90 CW */
         rot90_layer {
             layers = <1>;
-            input-processors = <&zip_rot_90 INPUT_EV_REL>;
+            input-processors = <&zip_rot_90 (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
         };
 
-        /* Layer 2: 180° */
+        /* Layer 2: 180 */
         rot180_layer {
             layers = <2>;
-            input-processors = <&zip_rot_180 INPUT_EV_REL>;
+            input-processors = <&zip_rot_180 (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
         };
 
-        /* Layer 3: 270° CW */
+        /* Layer 3: 270 CW */
         rot270_layer {
             layers = <3>;
-            input-processors = <&zip_rot_270 INPUT_EV_REL>;
+            input-processors = <&zip_rot_270 (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
         };
     };
 
