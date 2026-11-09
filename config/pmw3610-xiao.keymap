@@ -19,62 +19,63 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            /* Layer 0: Hướng 0° (bình thường) */
             bindings = <
-                &kp A    /* Pin 0.02 - Nút 1: Chuột trái */
-                &kp B    /* Pin 0.16 - Nút 2: Chuột phải */
-                &kp C    /* Pin 0.28 - Nút 3: Chuột giữa */
-                &kp D     /* Pin 0.03 - Nút 4: Nút Back */
-                &kp E     /* Pin 0.04 - Nút 5: Nút Forward */
-                &kp F    /* Pin 0.29 - Nút 6 */
-                &kp G    /* Pin 1.11 - Nút 7 */
-                &kp H      /* Pin 0.05 - Nút 8 */
+                &to 1    /* Nút 1: → chuyển sang 90° */
+                &kp B    /* Nút 2 */
+                &kp C    /* Nút 3 */
+                &kp D    /* Nút 4 */
+                &kp E    /* Nút 5 */
+                &kp F    /* Nút 6 */
+                &kp G    /* Nút 7 */
+                &kp H    /* Nút 8 */
             >;
-
             sensor-bindings = <&scroll_encoder>;
         };
+
         m1_layer {
+            /* Layer 1: Hướng 90° CW */
             bindings = <
-                &kp A    /* Pin 0.02 - Nút 1: Chuột trái */
-                &kp B    /* Pin 0.16 - Nút 2: Chuột phải */
-                &kp C    /* Pin 0.28 - Nút 3: Chuột giữa */
-                &kp D     /* Pin 0.03 - Nút 4: Nút Back */
-                &kp E     /* Pin 0.04 - Nút 5: Nút Forward */
-                &kp F    /* Pin 0.29 - Nút 6 */
-                &kp G    /* Pin 1.11 - Nút 7 */
-                &kp H      /* Pin 0.05 - Nút 8 */
+                &to 2    /* Nút 1: → chuyển sang 180° */
+                &kp B    /* Nút 2 */
+                &kp C    /* Nút 3 */
+                &kp D    /* Nút 4 */
+                &kp E    /* Nút 5 */
+                &kp F    /* Nút 6 */
+                &kp G    /* Nút 7 */
+                &kp H    /* Nút 8 */
             >;
-
             sensor-bindings = <&scroll_encoder>;
         };
+
         m2_layer {
+            /* Layer 2: Hướng 180° */
             bindings = <
-                &kp A    /* Pin 0.02 - Nút 1: Chuột trái */
-                &kp B    /* Pin 0.16 - Nút 2: Chuột phải */
-                &kp C    /* Pin 0.28 - Nút 3: Chuột giữa */
-                &kp D     /* Pin 0.03 - Nút 4: Nút Back */
-                &kp E     /* Pin 0.04 - Nút 5: Nút Forward */
-                &kp F    /* Pin 0.29 - Nút 6 */
-                &kp G    /* Pin 1.11 - Nút 7 */
-                &kp H      /* Pin 0.05 - Nút 8 */
+                &to 3    /* Nút 1: → chuyển sang 270° */
+                &kp B    /* Nút 2 */
+                &kp C    /* Nút 3 */
+                &kp D    /* Nút 4 */
+                &kp E    /* Nút 5 */
+                &kp F    /* Nút 6 */
+                &kp G    /* Nút 7 */
+                &kp H    /* Nút 8 */
             >;
-
             sensor-bindings = <&scroll_encoder>;
         };
-        m3_layer {
-            bindings = <
-                &kp A    /* Pin 0.02 - Nút 1: Chuột trái */
-                &kp B    /* Pin 0.16 - Nút 2: Chuột phải */
-                &kp C    /* Pin 0.28 - Nút 3: Chuột giữa */
-                &kp D     /* Pin 0.03 - Nút 4: Nút Back */
-                &kp E     /* Pin 0.04 - Nút 5: Nút Forward */
-                &kp F    /* Pin 0.29 - Nút 6 */
-                &kp G    /* Pin 1.11 - Nút 7 */
-                &kp H      /* Pin 0.05 - Nút 8 */
-            >;
 
+        m3_layer {
+            /* Layer 3: Hướng 270° CW */
+            bindings = <
+                &to 0    /* Nút 1: → quay về 0° */
+                &kp B    /* Nút 2 */
+                &kp C    /* Nút 3 */
+                &kp D    /* Nút 4 */
+                &kp E    /* Nút 5 */
+                &kp F    /* Nút 6 */
+                &kp G    /* Nút 7 */
+                &kp H    /* Nút 8 */
+            >;
             sensor-bindings = <&scroll_encoder>;
         };
     };
 };
-
-
